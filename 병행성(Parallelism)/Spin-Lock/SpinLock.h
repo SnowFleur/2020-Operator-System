@@ -7,23 +7,27 @@
 
 
 constexpr int MAX_THREADS   = 6;
-constexpr int MAX_LOOP      = 100000000;
+constexpr int MAX_LOOP      = 50000000;
 
 using namespace std::chrono;
 using Threads = std::vector<std::thread>;
-
+using mutex = std::mutex;
 class CSpinLock{
 private:
+    mutex       mutex_;
     Threads     threads_;
-    bool        SpinLock(std::atomic_int* addr, int  expected, int new_val);
-
+    void        SpinLock();
+    void        SpinUnLock();
+    bool        CAS(std::atomic_int* addr, int  expected, int new_val);
+    
+    void        SumBySpinLock();
+    void        SumByLock();
 public:
     CSpinLock() = default;
     ~CSpinLock() = default;
-
+    
     void        Run();
-    void        Sum();
 };
 
-static int g_sum{ 0 };
-std::atomic_int flag{};
+static volatile int g_sum{ 0 };
+static std::atomic_int flag{};
