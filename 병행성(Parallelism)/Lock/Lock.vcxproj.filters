@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="SpinLock">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="performance">
+      <UniqueIdentifier>{180afdb5-bee9-4f53-9f2b-f8a4d3f310cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SRWLock">
+      <UniqueIdentifier>{702916e8-cfa5-4c8e-8b50-7536cd25994c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SpinLock.h">
+      <Filter>SpinLock</Filter>
+    </ClInclude>
+    <ClInclude Include="PerformanceComparison.h">
+      <Filter>performance</Filter>
+    </ClInclude>
+    <ClInclude Include="SRWLock.h">
+      <Filter>SRWLock</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SpinLock.cpp">
+      <Filter>SpinLock</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="newSpinLock.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="PerformanceComparison.cpp">
+      <Filter>performance</Filter>
+    </ClCompile>
+    <ClCompile Include="SRWLock.cpp">
+      <Filter>SRWLock</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
