@@ -8,14 +8,17 @@ class CSpinLock{
 private:
     LONG                    spinLock_;
     int                     lockValue_=0;
+    CRITICAL_SECTION        cs_;
 
     bool        CAS(int*  addr, int  expected, int new_val);
     void        AcquireSpinLock(volatile LONG*)noexcept;
     void        ReleaseSpinLock(volatile LONG*)noexcept;
 public:
-    CSpinLock() = default;
+    CSpinLock();
     ~CSpinLock() = default;
     
     void        lock()noexcept;
     void        unlock()noexcept;
 };
+
+

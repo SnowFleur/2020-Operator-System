@@ -4,4 +4,7 @@
 int main() {
     std::unique_ptr<CPerformanceComparison>uPtrTestCode= std::make_unique<CPerformanceComparison>();
     uPtrTestCode->Run();
+
+    system("pause");
+
 }

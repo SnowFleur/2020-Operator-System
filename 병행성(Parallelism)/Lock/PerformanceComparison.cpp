@@ -1,9 +1,6 @@
 #include<iostream>
 #include"PerformanceComparison.h"
 
-
-
-
 void CPerformanceComparison::SumBySPinLock()noexcept {
     for (unsigned int i = 0; i < MAX_LOOP; ++i) {
         std::lock_guard<CSpinLock> lg(spinLock_);
@@ -24,8 +21,6 @@ void CPerformanceComparison::SumBySRWLock()noexcept {
         sum_ += 1;
     }
 }
-
-
 
 void CPerformanceComparison::Run() {
 
