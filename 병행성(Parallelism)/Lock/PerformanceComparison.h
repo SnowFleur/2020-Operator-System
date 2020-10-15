@@ -10,6 +10,7 @@
 
 constexpr int          MAX_THREADS          = 8;
 constexpr unsigned int MAX_LOOP             = 10000000;
+
 //Lock
 constexpr int          MUTEX                = 1;
 constexpr int          SPIN_LOCK_WITH_CAS   = 2;

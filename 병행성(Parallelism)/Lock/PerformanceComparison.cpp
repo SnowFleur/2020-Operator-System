@@ -1,6 +1,7 @@
 #include<iostream>
 #include"PerformanceComparison.h"
 
+
 void CPerformanceComparison::SumBySPinLock()noexcept {
     for (unsigned int i = 0; i < MAX_LOOP; ++i) {
         std::lock_guard<CSpinLock> lg(spinLock_);
@@ -22,9 +23,11 @@ void CPerformanceComparison::SumBySRWLock()noexcept {
     }
 }
 
+
+
 void CPerformanceComparison::Run() {
 
-    std::cout << "====number of Theads: " << MAX_THREADS << "=====\n\n\n";
+    std::cout << "====number of Thread: " << MAX_THREADS << "=====\n\n\n";
 
 #pragma region Mutex Lock
     {

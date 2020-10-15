@@ -6,16 +6,18 @@
 
 class CSpinLock{
 private:
-    LONG                    spinLock_;
-    int                     lockValue_=0;
-    CRITICAL_SECTION        cs_;
-
-    bool        CAS(int*  addr, int  expected, int new_val);
+#ifdef _WIN64
+    LONG         lockValue_;
+#else
+    int          lockValue_;
+#endif
+    bool        CAS(int* volatile addr, int  expected, int new_val);
     void        AcquireSpinLock(volatile LONG*)noexcept;
     void        ReleaseSpinLock(volatile LONG*)noexcept;
 public:
-    CSpinLock();
+    CSpinLock() = default;
     ~CSpinLock() = default;
+    
     
     void        lock()noexcept;
     void        unlock()noexcept;
