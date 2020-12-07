@@ -2,17 +2,16 @@
 #include<Windows.h>
 
 
-
 struct SpinWait {
     struct SYSINFO;
 public:
     static  SYSINFO s_si;
     int     count_;
 public:
-    const int YIELD_THRESHOLD = 25;     // 스핀 수행 한계치
-    const int MAX_SPIN_INTERVAL = 32;   // 최대 스핀 인터벌
-    const int SLEEP_0_TIMES = 2;        // Sleep(0) 호출을 위한 빈도
-    const int SLEEP_1_TIMES = 10;       // Sleep(1) 호출을 위한 빈도
+    const int YIELD_THRESHOLD   = 25;       // 스핀 수행 한계치
+    const int MAX_SPIN_INTERVAL = 32;       // 최대 스핀 인터벌
+    const int SLEEP_0_TIMES     = 2;        // Sleep(0) 호출을 위한 빈도
+    const int SLEEP_1_TIMES     = 10;       // Sleep(1) 호출을 위한 빈도
 
  //YiedlProcesser 호출 여부를 판별하는 매크로
 #define NextSpinWillYield (s_si.dwNumberOfProcessors==1 || count_>=YIELD_THRESHOLD)
@@ -48,9 +47,11 @@ public:
                 YieldProcessor();
             }
             //누적 스핀횟수를 보관하기 위해 count_ 필드 값 증가
-            count_ = (count_ == INT_MAX ? YIELD_THRESHOLD : count_ + 1);
         }
+            count_ = ((count_ == INT_MAX) ? YIELD_THRESHOLD : count_ + 1);
     }
+
+
 
     void Rest() {
         count_ = 0;

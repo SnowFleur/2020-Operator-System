@@ -6,14 +6,14 @@
 
 
 class CSpinLock {
-    const int      LOCK_AVAIL = 0;
+    const DWORD     LOCK_AVAIL = 0;
 private:
 #ifdef WIN32
     volatile DWORD  state_;
 #else
     volatile LONG LONG  state_;
 #endif // WIN32
-    DWORD            CAS(DWORD volatile*, int, int);
+    DWORD            CAS(volatile DWORD* , int, int);
 public:
     CSpinLock();
     ~CSpinLock() = default;

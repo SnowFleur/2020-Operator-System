@@ -23,8 +23,6 @@ void CPerformanceComparison::SumBySRWLock()noexcept {
     }
 }
 
-
-
 void CPerformanceComparison::Run() {
 
     std::cout << "====number of Thread: " << MAX_THREADS << "=====\n\n\n";
