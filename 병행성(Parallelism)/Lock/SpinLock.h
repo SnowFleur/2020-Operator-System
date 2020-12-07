@@ -4,23 +4,22 @@
 #include<Windows.h>
 
 
-class CSpinLock{
+
+class CSpinLock {
+    const int      LOCK_AVAIL = 0;
 private:
-#ifdef _WIN64
-    LONG         lockValue_;
+#ifdef WIN32
+    volatile DWORD  state_;
 #else
-    int          lockValue_;
-#endif
-    bool        CAS(int* volatile addr, int  expected, int new_val);
-    void        AcquireSpinLock(volatile LONG*)noexcept;
-    void        ReleaseSpinLock(volatile LONG*)noexcept;
+    volatile LONG LONG  state_;
+#endif // WIN32
+    DWORD            CAS(DWORD volatile*, int, int);
 public:
-    CSpinLock() = default;
+    CSpinLock();
     ~CSpinLock() = default;
-    
-    
-    void        lock()noexcept;
-    void        unlock()noexcept;
+
+    void            lock()noexcept;
+    void            unlock()noexcept;
 };
 
 
