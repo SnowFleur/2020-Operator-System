@@ -8,7 +8,7 @@
 #include"SpinLock.h"
 #include"SRWLock.h"
 
-constexpr int          MAX_THREADS          = 8;
+constexpr int          MAX_THREADS          = 2;
 constexpr unsigned int MAX_LOOP             = 10000000;
 
 //Lock
